@@ -6,12 +6,13 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(username: params[:username])
-    if @user && @user.authenticate(params[:password])
+    data = ses_params.to_h
+    @user = User.find_by(username: data[:username])
+    if @user && @user.authenticate(data[:password_digest])
       sessions[:user_uid] = @user.uid
-      redirect_to '/home'
+      render json: {state: true, desc: "Usuario autenticado"}
     else
-      render json: "No existe usuario"
+      render json: {state: false, desc: "No existe usuario"}
     end
   end
 
@@ -22,5 +23,11 @@ class SessionsController < ApplicationController
   end
 
   def page_requires_login
+  end
+
+  private
+
+  def ses_params
+    params.permit(:username, :password_digest)
   end
 end

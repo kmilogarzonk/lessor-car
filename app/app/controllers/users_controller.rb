@@ -7,8 +7,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.create(params.permit(:username, :password))
+    data = usr_params.to_h
+    data[:validate_fn] = "create"
+    @user = UserService.new(data).create
     session[:user_uid] = @user.uid
     redirect_to '/home'
+  end
+
+  private
+
+  def usr_params
+    params.permit(:identification_number, :password_digest, :email, :phone_number)
   end
 end

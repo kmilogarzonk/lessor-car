@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
   def authorized
     redirect_to '/home' unless logged_in?
  end
+
+  rescue_from ApiExceptions::BaseException,
+  :with => :render_error_response
+
+  def render_error_response(error)
+    render json: error, serializer: ApiExceptionsSerializer, status: error.status
+  end
 end

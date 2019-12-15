@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   #UI
   root 'sessions#welcome'
 
-  resources :users, only: [:new, :create]
+  #Create user
+  post 'signup', to: 'users#create'
 
   #Login
   get 'login', to: 'sessions#new'

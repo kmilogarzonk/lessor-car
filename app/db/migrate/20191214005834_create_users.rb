@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[6.0]
       t.string :uid, null: false, index: { unique: true }, limit: 200, primary_key: true
       t.string :identification_number
       t.string :username
-      t.string :password
+      t.string :password_digest
       t.string :email
       t.integer :phone_number
 

@@ -65,3 +65,7 @@ gem 'toastr-rails'
 
 #Gems Deploy React in Rails
 gem 'react-rails'
+
+#Active Resource
+gem 'activeresource'
+gem 'active_model_serializers'
