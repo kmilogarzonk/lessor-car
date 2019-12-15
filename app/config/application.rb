@@ -10,10 +10,24 @@ module App
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-
+    
+    config.generators.javascript_engine = :js
+    config.eager_load_paths += ["#{config.root}/lib"]
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.before_configuration do
+
+      env_file = File.join(Rails.root, 'config', 'local_env.yml')
+      if File.exist?(env_file)
+        YAML.safe_load(File.read(env_file)).each do |key, value|
+          value = value.join(',') if value.is_a?(Array)
+          value = value.to_s unless value.is_a?(Hash) 
+          value = value.to_json if value.is_a?(Hash)
+          ENV[key.to_s] = value.to_s
+        end
+      end
+    end
   end
 end

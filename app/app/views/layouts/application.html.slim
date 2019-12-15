@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title
+      = "App"
+
+    meta[charset="UTF-8"]
+    meta[name="google" content="notranslate"]
+    meta[http-equiv="Content-Language" content="es"]
+    meta[name="viewport" content="width=device-width, initial-scale=1"]
+    link[href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,700,900" rel="stylesheet"]
+    link[href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"]
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_pack_tag 'mainapp'
+
+  body[class="#{controller_name}"]   
+    .loader.hide.valign-wrapper
+      .preloader-wrapper.big.active
+        .spinner-layer.spinner-blue-only
+          .circle-clipper.left
+            .circle
+          .gap-patch
+            .circle
+          .circle-clipper.right
+            .circle  
+    
+    #sidecontent
+      = yield
