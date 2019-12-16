@@ -29,7 +29,7 @@ class RentCar extends PureComponent<IRentCarProps, IRentCarStates> {
     return (
       <Row className="sectionRent hide z-depth-1">
         <Col s={12} l={12}>
-          Holi from rent
+          From rent
         </Col>
       </Row>
     )
