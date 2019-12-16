@@ -1,6 +1,6 @@
 class UserService < ApplicationService
 
-  attr_reader :identification_number, :password_digest, :email, :phone_number, :validate_fn
+  attr_reader :identification_number, :password, :email, :phone_number, :validate_fn
   
   validates_with UserHandlerValidator
 
@@ -17,7 +17,7 @@ class UserService < ApplicationService
       identification_number: @identification_number,
       email: @email,
       username: @identification_number,
-      password_digest: @password_digest,
+      password_digest: @password,
       phone_number: @phone_number
     }
     user = User.create(userNew)

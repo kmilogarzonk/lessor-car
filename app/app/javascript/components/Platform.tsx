@@ -29,13 +29,14 @@ class Platform extends PureComponent<IPlatformProps, IPlatformStates> {
   }
 
   componentDidMount() {
+    console.log(this.props.user)
   }
 
   render () {
     return (
       <div className="platform">
         <NavBarUser user={this.props.user} />
-        <MapContainer api_key={this.props.apiKey} google={this.props.google}  />
+        <MapContainer api_key={this.props.apiKey} google={this.props.google} user={this.props.user}  />
       </div>
     )
   }

@@ -1,0 +1,19 @@
+.map{
+  position: relative;
+  height: 98vh;
+  .mapPlatform{
+    width: 100% !important;
+    height: 94vh !important;
+    font-family: 'Montserrat', sans-serif;    
+  }
+  .btnC{
+    position: absolute;
+    left: 1rem;
+    &.btnRent{
+      bottom: 8rem;
+    }
+    &.btnRide{
+      bottom: 15rem;
+    }
+  }
+}

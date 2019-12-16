@@ -8,7 +8,8 @@ class SessionsController < ApplicationController
   def create
     data = ses_params.to_h
     @user = User.find_by(username: data[:username])
-    if @user && @user.authenticate(data[:password_digest])
+    byebug
+    if @user && @user.authenticate(data[:password])
       sessions[:user_uid] = @user.uid
       render json: {state: true, desc: "Usuario autenticado"}
     else
@@ -35,6 +36,6 @@ class SessionsController < ApplicationController
   private
 
   def ses_params
-    params.permit(:username, :password_digest)
+    params.permit(:username, :password)
   end
 end
