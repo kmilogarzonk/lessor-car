@@ -74,7 +74,7 @@ class SignUp extends PureComponent<ISignUpProps, ISignUpStates> {
         method,
         data: {
           identification_number: this.state.identification_number,
-          password_digest: this.state.password,
+          password: this.state.password,
           email: this.state.email,
           phone_number: this.state.phone_number
         }

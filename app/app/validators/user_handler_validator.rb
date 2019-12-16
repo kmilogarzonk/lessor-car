@@ -9,10 +9,10 @@ class UserHandlerValidator < ActiveModel::Validator
   end
 
   def create(record)
-    if record.identification_number.blank? || record.password_digest.blank? || record.email.blank?
+    if record.identification_number.blank? || record.password.blank? || record.email.blank?
       error = []
       error << "Identification is required (identification_number)" if record.identification_number.blank?
-      error << "Password is required (password_digest)" if record.password_digest.blank?
+      error << "Password is required (password)" if record.password.blank?
       error << "Email is required (email)" if record.email.blank?
       raise ApiExceptions::UserError::MissingParams.new(error.join(', ')) if error.size > 0
     end
