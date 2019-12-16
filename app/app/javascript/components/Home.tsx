@@ -4,6 +4,7 @@ import axios from 'axios'
 import '../styles/home.scss'
 import Login from './Login'
 import SignUp from './SignUp'
+import { Redirect, Route } from 'react-router'
 
 interface IHomeProps {
   path_url: string
@@ -29,7 +30,6 @@ class Home extends PureComponent<IHomeProps, IHomeStates> {
   }
 
   componentDidMount() {
-    console.log(this.props.logged_in)
   }
 
   _changeViewSign = (type) => {
@@ -46,7 +46,7 @@ class Home extends PureComponent<IHomeProps, IHomeStates> {
           <div className="card-sign z-depth-1">
             <img src="/images/logo.png" className="logo"/>
             <h5>
-              <a href="#" onClick={e => {
+              <a href="#" className="sign_in" onClick={e => {
                 e.preventDefault()
                 this._changeViewSign("in")
               }}>Inicia sesión</a> o 
@@ -67,18 +67,10 @@ class Home extends PureComponent<IHomeProps, IHomeStates> {
     )
   }
 
-  logged = () => {
-    return(
-      <div>
-        Holi looged
-      </div>
-    )
-  }
-
   contentHome = () => {
     let content:any = ""
     if(this.props.logged_in){
-      content = this.logged()
+      content = window.location.href = '/home'
     }else{
       content = this.unLogged()
     }

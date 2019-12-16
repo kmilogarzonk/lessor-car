@@ -1,0 +1,13 @@
+.barUser{
+  position: relative;
+  background: rgb(58, 179, 118);
+  .brand-logo img{
+    width: 4rem;
+  }
+  .dropdown-content{
+    top: 3rem !important;
+    width: 15rem !important;
+    left: auto !important;
+    right: 0 !important;
+  }
+}

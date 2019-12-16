@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #Login
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
-  get 'home', to: 'sessions#welcome'
+  get 'home', to: 'platform#home'
   get 'authorized', to: 'sessions#page_requires_login'
 
   #API

@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     data[:validate_fn] = "create"
     @user = UserService.new(data).create
     session[:user_uid] = @user.uid
-    redirect_to '/home'
+    render json: {state: true, desc: "Usuario registrado"}
   end
 
   private

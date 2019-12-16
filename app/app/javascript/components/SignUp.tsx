@@ -13,6 +13,7 @@ interface ISignUpStates {
   identification_number: string
   email: string
   phone_number: string
+  reload: boolean
 }
 
 class SignUp extends PureComponent<ISignUpProps, ISignUpStates> {
@@ -23,7 +24,8 @@ class SignUp extends PureComponent<ISignUpProps, ISignUpStates> {
       password: "",
       identification_number: "",
       email: "",
-      phone_number: ""
+      phone_number: "",
+      reload: false
     }    
     this._handleSubmitSignUp = this._handleSubmitSignUp.bind(this)
     const csrfToken: string = document.querySelector<HTMLMetaElement>(
@@ -45,7 +47,6 @@ class SignUp extends PureComponent<ISignUpProps, ISignUpStates> {
   }
 
   _handleSubmitSignUp = e => {
-    console.log(e)
     e.preventDefault()
     this.validatorSignUp()
   }
@@ -80,10 +81,11 @@ class SignUp extends PureComponent<ISignUpProps, ISignUpStates> {
       })
       .then(({ data }) => {
         console.log(data)
-        this.loader()        
-        this.forceUpdate()
-        M.toast({ html: data })
-        return <Redirect to = {{ pathname: "/home" }} />;
+        this.loader()
+        if (data.state){
+          M.toast({ html: `${data.desc}` })
+          window.location.reload()
+        }           
       })
       .catch(e => {
         console.log(e);

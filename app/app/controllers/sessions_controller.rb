@@ -16,6 +16,13 @@ class SessionsController < ApplicationController
     end
   end
 
+  def delete
+    if !sessions[:user_uid].blank?
+      sessions[:user_uid] = nil
+      render json: {state: true, desc: "Sesion finalizada"}
+    end
+  end
+
   def login
   end
 

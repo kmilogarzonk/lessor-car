@@ -1,1 +1,3 @@
 relative_url_root: ''
+api_key_googlemaps: "AIzaSyAs939VUvkECpI-yZL6LqGt7mR6WOv0ehs"
+url_googlemaps: "https://maps.googleapis.com/maps/api/js?libraries=drawing"
